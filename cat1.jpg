@@ -1,0 +1,150 @@
+cat1.jpg
+cat2.jpg
+cat3.jpg
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Булочка</title>
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(180deg, #050b18, #000000);
+    color: #dbe9ff;
+    overflow-x: hidden;
+}
+
+/* Космические звёздочки */
+@keyframes twinkle {
+    0%, 100% { opacity: 0.8; transform: scale(1); }
+    50% { opacity: 0.2; transform: scale(1.2); }
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 2s infinite;
+}
+
+.container {
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+    position: relative;
+    z-index: 1;
+}
+
+h1 {
+    text-align: center;
+    color: #ff79b0; /* Розовый цвет */
+    position: relative;
+}
+
+.text {
+    background: rgba(10, 20, 40, 0.7);
+    padding: 15px;
+    border-radius: 12px;
+    line-height: 1.5;
+    font-size: 14px;
+    white-space: pre-line;
+    position: relative;
+    z-index: 1;
+}
+
+/* Сердечки */
+.heart {
+    position: absolute;
+    font-size: 16px;
+    color: #ff69b4;
+    animation: float 5s infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    50% { transform: translateY(-100px) rotate(180deg); opacity: 0.6; }
+    100% { transform: translateY(-200px) rotate(360deg); opacity: 0; }
+}
+
+.photos {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    z-index: 1;
+    position: relative;
+}
+.photos img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
+}
+
+.footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+/* Добавляем эффекты для текста */
+h1::after {
+    content: '💖💖💖';
+    display: block;
+    font-size: 18px;
+    margin-top: 5px;
+    text-align: center;
+}
+</style>
+</head>
+<body>
+
+<!-- Звёздочки космоса -->
+<script>
+for(let i=0;i<100;i++){
+    let star = document.createElement('div');
+    star.className = 'star';
+    star.style.top = Math.random()*100 + '%';
+    star.style.left = Math.random()*100 + '%';
+    star.style.width = (Math.random()*3+1)+'px';
+    star.style.height = star.style.width;
+    star.style.animationDuration = (Math.random()*3+2)+'s';
+    document.body.appendChild(star);
+}
+
+// Сердечки
+function createHeart() {
+    let heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.style.left = Math.random() * window.innerWidth + 'px';
+    heart.innerText = '💖';
+    document.body.appendChild(heart);
+    setTimeout(() => { heart.remove(); }, 5000);
+}
+setInterval(createHeart, 800);
+</script>
+
+<div class="container">
+<h1>Булочка 💙</h1>
+<div class="text">
+Булочка - милая кошечка.
+Сидит у окошечка.
+Лапки поджимает.
+Сердце замирает.
+Молочко хлебает.
+Радостью заражает.
+</div>
+<div class="photos">
+<img src="cat1.jpg" alt="Булочка 1">
+<img src="cat2.jpg" alt="Булочка 2">
+<img src="cat3.jpg" alt="Булочка 3">
+</div>
+<div class="footer">
+Для самой милой кошечки 🐾
+</div>
+</div>
+</body>
+</html>
